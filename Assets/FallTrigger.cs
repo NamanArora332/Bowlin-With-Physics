@@ -1,11 +1,9 @@
-using System;
-using UnityEngine.Events;
 using UnityEngine;
-
+using UnityEngine.Events;
+using System;
 
 public class FallTrigger : MonoBehaviour
 {
-
     public UnityEvent OnPinFall = new();
     public bool isPinFallen = false;
     private void OnTriggerEnter(Collider triggeredObject)
@@ -14,8 +12,7 @@ public class FallTrigger : MonoBehaviour
         {
             isPinFallen = true;
             OnPinFall?.Invoke();
-            Debug.Log($"{gameObject.name} is fallen");
-
+            Debug.Log($"{gameObject.name}.is fallen");
         }
     }
 }

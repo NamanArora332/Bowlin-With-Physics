@@ -16,12 +16,11 @@ private bool isBallLaunched;
 {
 //Grabbing a reference to RigidBody
 ballRB = GetComponent<Rigidbody>();
-inputManager.OnSpacePressed.AddListener(LaunchBall);
-        transform.parent = ballAnchor;
-        transform.localPosition = Vector3.zero;
-        ballRB.isKinematic = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        inputManager.OnSpacePressed.AddListener(LaunchBall);
 
 
+        ResetBall();
 
     }
 
@@ -37,5 +36,14 @@ inputManager.OnSpacePressed.AddListener(LaunchBall);
         launchIndicator.gameObject.SetActive(false);
 
 
+    }
+    public void ResetBall()
+    {
+
+        isBallLaunched = false; 
+        ballRB.isKinematic = true;
+        launchIndicator.gameObject.SetActive(true);
+        transform.parent = ballAnchor;
+        transform.localPosition = Vector3.zero;
     }
 }
